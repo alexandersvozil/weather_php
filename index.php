@@ -22,6 +22,14 @@ $response = get_weather_data_luxembourg();
         echo json_encode(json_decode($response, true));
         ?>;
     </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZGEHDYTC38"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-ZGEHDYTC38');
+    </script>
 
 </head>
 
