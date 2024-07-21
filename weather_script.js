@@ -97,12 +97,9 @@ function weatherApp() {
       }
       return null;
     },
-    generateShareText() {
-      const websiteUrl = "https://lux.alexandersvozil.com"; // Replace with your actual website URL
-      return `Next good weather in Luxembourg: ${this.nextGoodWeather}\nCountdown: ${this.countdown} ${this.emoji}\nCheck it out: ${websiteUrl}`;
-    },
     shareToWhatsApp() {
-      const text = this.generateShareText();
+      const websiteUrl = "https://lux.alexandersvozil.com"; // Replace with your actual website URL
+      const text = `Next good weather in Luxembourg: ${this.nextGoodWeather}\nCountdown: ${this.countdown} ${this.emoji}\nCheck it out: ${websiteUrl}`;
       const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(
         text
       )}`;

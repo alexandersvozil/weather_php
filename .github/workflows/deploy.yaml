@@ -17,5 +17,5 @@ jobs:
           username: ${{ secrets.SERVER_USERNAME }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           script: |
-            cd /var/www/weather_php
+            cd /var/www/lux.alexandersvozil.com
             git pull origin main
