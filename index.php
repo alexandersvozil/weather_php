@@ -58,7 +58,15 @@ $response = get_weather_data_luxembourg();
                 </div>
             </div>
         </div>
-    </div>
+        <div class="row justify-content-center" x-show="!showUmbrella">
+            <div class="card shadow-lg mt-1">
+                <div class="card-body p-5">
+                    <a href="https://www.amazon.de/gp/bestsellers/garden/3024215031/ref=pd_zg_hrsr_garden">Maybe go for
+                        a
+                        picnic? 🧺</a>
+                </div>
+            </div>
+        </div>
 
     </div>
 
