@@ -1,10 +1,7 @@
 <?php
-
-$apiKey = '1b4b78c66081400dae0140432243006';
-$url = "https://api.weatherapi.com/v1/forecast.json?key=" . $apiKey . "&q=Luxembourg&days=21&aqi=no&alerts=no";
-$response = file_get_contents($url);
-
-
+error_reporting(E_ALL);
+require "weather_api.php";
+$response = get_weather_data_luxembourg();
 ?>
 
 <!DOCTYPE html>
@@ -17,39 +14,39 @@ $response = file_get_contents($url);
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
-
-
-    <link rel="stylesheet" href="./app.css">
-
     <title>Weather App</title>
-
-    <style>
-
-    </style>
-
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <script src="weather_script.js"></script>
     <script>
-        window.mydata = JSON.parse('<?php echo $response ?>');
+        window.mydata = <?php
+        echo json_encode(json_decode($response, true));
+        ?>;
     </script>
 
-    <script src="script.js" defer></script>
 </head>
 
 <body class="bg-light">
-    <div class="container mt-5">
+    <div class="container mt-5" x-data="weatherApp()">
         <div class="row justify-content-center">
-
             <div class="card shadow-lg mt-5">
-                <div class=" card-body p-5">
-                    <h1 class="card-title text-center mb-4">🇱🇺 Next Good Weather:</h1>
+                <div class="card-body p-5">
+                    <h1 class="card-title text-center mb-4">🇱🇺 Weather Oracle prediction</h1>
                     <h2 class="text-center mb-4">☀️
-                        <span id="nextGoodWeather"></span>☀️
+                        <span x-text="nextGoodWeather"></span>☀️
                     </h2>
                     <p class="text-center mb-4">Countdown:
-                        <span id="countdown"></span>
-                        <span id="emoji"></span>
+                        <span x-text="countdown"></span>
+                        <span x-text="emoji"></span>
                     </p>
+                </div>
 
 
+            </div>
+        </div>
+        <div class="row justify-content-center" x-show="showUmbrella">
+            <div class="card shadow-lg mt-1">
+                <div class="card-body p-5">
+                    Need an <a href="https://amzn.to/4cGkhDT">umbrella? ☔️</a>
                 </div>
             </div>
         </div>
@@ -71,10 +68,7 @@ $response = file_get_contents($url);
     </footer>
     </div>
 
-    <script src="./app.js" defer></script>
-    <script>
-        window.mydata = JSON.parse('<?php echo $response ?>');
-    </script>
+
 </body>
 
 </html>
