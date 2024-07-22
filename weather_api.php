@@ -21,7 +21,7 @@ function get_weather_data_luxembourg()
 {
     $project_root = __DIR__;
     $weather_lux_cache_filename = $project_root . '/' . 'weather_lux_cache_file.json';
-    $cacheTime = 3600;
+    $cacheTime = 120;
     $last_time_read = filemtime($weather_lux_cache_filename);
 
     if (

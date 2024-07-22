@@ -74,9 +74,11 @@ function weatherApp() {
         } else {
           this.emoji = "😊🌞";
         }
+        this.showUmbrella = true;
       } else {
         this.countdown = "Good weather is here!";
         this.emoji = "😎";
+        this.showUmbrella = false;
       }
 
       return weatherIsNotGood;
