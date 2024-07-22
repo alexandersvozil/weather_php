@@ -1,9 +1,10 @@
 function shareData() {
   return {
     shareDetails: {
-      title: "Your Website Title",
-      text: "Check out this awesome website!",
-      url: "https://yourwebsite.com",
+      title: "Laughembourg Weather App",
+      text: "The app that finds fun activities even when it rains",
+      url: "https://lux.alexandersvozil.com",
+      image: "https://lux.alexandersvozil.com/meme.jpg",
     },
     share() {
       if (navigator.share) {
