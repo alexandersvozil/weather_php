@@ -47,3 +47,5 @@ function get_weather_data_luxembourg()
 
     return $response;
 }
+
+

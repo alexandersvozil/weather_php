@@ -1,7 +1,12 @@
 <?php
 error_reporting(E_ALL);
 require "weather_api.php";
+require "haiku_prompt.php";
+
 $response = get_weather_data_luxembourg();
+$current_weather = json_encode(json_decode($response, true)["current"]);
+$claude_meme = get_claude_meme($current_weather);
+
 ?>
 
 <!DOCTYPE html>
@@ -48,14 +53,16 @@ $response = get_weather_data_luxembourg();
         <div class="row justify-content-center">
             <div class="card shadow-lg mt-5">
                 <div class="card-body p-5">
-                    <h1 class="card-title text-center mb-4">🇱🇺 Weather Oracle 🇱🇺</h1>
+                    <h1 class="card-title text-center mb-4">🇱🇺 Weather Oracle 🔮</h1>
                     <h2 class="text-center mb-4">☀️
                         <span x-text="nextGoodWeather"></span>☀️
                     </h2>
-                    <p class="text-center mb-4">Countdown:
+                    <p class="text-center mb-4">Countdown to pleasant weather:
                         <span x-text="countdown"></span>
                         <span x-text="emoji"></span>
                     </p>
+
+
                     <span x-show="showUmbrella">Need an <a href="https://amzn.to/4cGkhDT">umbrella? ☔️</a></span>
                     <span x-show="!showUmbrella"><a
                             href="https://www.amazon.de/gp/bestsellers/garden/3024215031/ref=pd_zg_hrsr_garden">Maybe
@@ -63,6 +70,14 @@ $response = get_weather_data_luxembourg();
                             for
                             a
                             picnic? 🧺</a></a></span>
+                </div>
+            </div>
+            <div class="card shadow-lg mt-5">
+                <div class="card-body p-5">
+                    <div class="mt-4">
+                        <h3 class="text-center">Weather Tip of the hour ⏳</h3>
+                        <p class="text-center"><?php echo $claude_meme; ?></p>
+                    </div>
                 </div>
             </div>
         </div>
