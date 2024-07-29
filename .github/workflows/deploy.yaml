@@ -19,6 +19,20 @@ jobs:
           script: |
             cd /var/www/lux.alexandersvozil.com
             git pull origin main
-            echo "WEATHER_API_KEY=${{ secrets.WEATHER_API_KEY }}" > .env
-            echo "ANTHROPIC_KEY=${{ secrets.ANTHROPIC_KEY }}" >> .env
+            echo 'WEATHER_API_KEY="${{ secrets.WEATHER_API_KEY }}"' > .env
+            echo 'ANTHROPIC_KEY="${{ secrets.ANTHROPIC_KEY }}"' >> .env
             composer install --no-interaction --prefer-dist --optimize-autoloader
+
+            # Set correct ownership
+            sudo chown -R www-data:www-data .
+
+            # Set correct permissions
+            sudo find . -type d -exec chmod 755 {} \;
+            sudo find . -type f -exec chmod 644 {} \;
+
+            # Set stricter permissions for .env file
+            sudo chmod 600 .env
+
+            # Restart web server and PHP-FPM
+            sudo systemctl restart nginx
+            sudo systemctl restart php8.3-fpm
