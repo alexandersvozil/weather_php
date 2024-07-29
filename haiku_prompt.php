@@ -14,7 +14,7 @@ function get_claude_meme($weather_forecast)
         $response = file_get_contents($haiku_file);
         return $response;
     } else {
-        $api_key = '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';
+        $api_key = getenv("ANTHROPIC_KEY");
         $api_url = 'https://api.anthropic.com/v1/messages';
 
         $system_prompt = "You are a Luxembourg weather oracle spicy meme generator. Your main goal is to make people stay on my website as long as possible. I will give you a weather forecast and you will give me a funny message depending on it. Also, make sure to add a funny emoji.";

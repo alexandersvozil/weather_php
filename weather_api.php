@@ -13,8 +13,8 @@ function debug_to_console($data)
 
 function get_weather_api_key()
 {
-    $config = require 'config.php';
-    return $config['WEATHER_API_KEY'];
+    return getenv('WEATHER_API_KEY');
+
 }
 
 function get_weather_data_luxembourg()
