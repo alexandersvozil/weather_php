@@ -1,8 +1,10 @@
 <?php
-error_reporting(E_ALL);
+require __DIR__ . '/vendor/autoload.php';
 require "weather_api.php";
 require "haiku_prompt.php";
-
+error_reporting(E_ALL);
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
 $response = get_weather_data_luxembourg();
 $current_weather = json_encode(json_decode($response, true)["current"]);
 $claude_meme = get_claude_meme($current_weather);

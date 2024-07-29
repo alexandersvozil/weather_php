@@ -17,8 +17,8 @@ jobs:
           username: ${{ secrets.SERVER_USERNAME }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           script: |
-            echo 'export WEATHER_API_KEY=${{ secrets.WEATHER_API_KEY }}' >> ~/.bashrc
-            echo 'export ANTHROPIC_KEY=${{ secrets.ANTHROPIC_KEY }}' >> ~/.bashrc
-            source ~/.bashrc
             cd /var/www/lux.alexandersvozil.com
             git pull origin main
+            echo "WEATHER_API_KEY=${{ secrets.WEATHER_API_KEY }}" > .env
+            echo "ANTHROPIC_KEY=${{ secrets.ANTHROPIC_KEY }}" >> .env
+            composer install --no-interaction --prefer-dist --optimize-autoloader

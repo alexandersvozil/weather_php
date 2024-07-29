@@ -13,7 +13,7 @@ function debug_to_console($data)
 
 function get_weather_api_key()
 {
-    return getenv('WEATHER_API_KEY');
+    return $_ENV['WEATHER_API_KEY'];
 
 }
 

@@ -1,1 +1,5 @@
 .vscode
+weather_lux_cache_file.json
+haiku_file.json
+.env
+/vendor/
