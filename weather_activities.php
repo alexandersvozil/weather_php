@@ -1,9 +1,14 @@
 <div class="row justify-content-center mt-4">
+
     <div class="col-md-8">
         <h3 class="text-center mb-3">
             🌡️ Recommended activities 🌡️
         </h3>
+
+
+
         <div class="accordion" id="weatherActivities">
+
             <div class="accordion-item" x-show="!showUmbrella">
                 <h2 class="accordion-header">
                     <button class="accordion-button" type="button" data-bs-toggle="collapse"
@@ -11,6 +16,7 @@
                         Sunny Weather Activities
                     </button>
                 </h2>
+
                 <div id="sunnyActivities" class="accordion-collapse collapse show" data-bs-parent="#weatherActivities">
                     <div class="accordion-body">
                         <ul>
@@ -50,8 +56,6 @@
                 <div id="coldActivities" class="accordion-collapse collapse" data-bs-parent="#weatherActivities">
                     <div class="accordion-body">
                         <ul>
-                            <!-- <li>Ice skating at Kockelscheuer Ice Rink</li>
-                            <li>Visit the Christmas markets (seasonal)</li> -->
                             <li>Warm up with local cuisine at a traditional restaurant</li>
                             <li>Tour the Grand Ducal Palace (guided tours available)</li>
                         </ul>

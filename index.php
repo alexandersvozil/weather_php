@@ -7,7 +7,6 @@ $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 $response = get_weather_data_luxembourg();
 $current_weather = json_encode(json_decode($response, true)["current"]);
-$claude_meme = get_claude_meme($current_weather);
 
 ?>
 
@@ -73,17 +72,21 @@ $claude_meme = get_claude_meme($current_weather);
                             picnic? 🧺</a></a></span>
                 </div>
             </div>
-            <div class="card shadow-lg mt-5">
-                <div class="card-body p-5">
-                    <div class="mt-4">
-                        <h3 class="text-center">Weather Tip of the hour ⏳</h3>
-                        <p class="text-center"><?php echo $claude_meme; ?></p>
-                    </div>
+        </div>
+        <div class="card shadow-lg mt-5" x-show="!showUmbrella">
+            <div class="card-body p-5">
+                <div class="flex-row">
+                    <h3 class="text-center">Lake Opportunities</h3>
+                    <iframe style="width: 100%; height: 250px; border: none;"
+                        src="
+                        https://docs.google.com/spreadsheets/d/1pCeYVdPLPp6yEF2haLhb6KIeEMSmhTd3D4IgfFHlufE/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false">
+                    </iframe>
                 </div>
             </div>
         </div>
         <?php include 'weather_activities.php'; ?>
     </div>
+
 
     <footer class="text-center mt-4" x-data="shareData()">
         <a class="btn btn-light" @click="share">Share
