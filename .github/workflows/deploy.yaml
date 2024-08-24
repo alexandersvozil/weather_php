@@ -18,8 +18,8 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           script: |
             cd /var/www/lux.alexandersvozil.com
-            git pull origin main
             git config --global --add safe.directory /var/www/lux.alexandersvozil.com
+            git pull origin main
             echo 'WEATHER_API_KEY="${{ secrets.WEATHER_API_KEY }}"' > .env
             echo 'ANTHROPIC_KEY="${{ secrets.ANTHROPIC_KEY }}"' >> .env
             composer install --no-interaction --prefer-dist --optimize-autoloader
